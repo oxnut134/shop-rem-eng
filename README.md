@@ -220,7 +220,7 @@ docker compose exec app composer install
        # This will generate sample data including items and logs.
 ```
 
-## **8) Future Roadmap (Postscript)
+## 8) Future Roadmap (Postscript)
 
 While this application was initially designed to prevent forgetting items during grocery shopping, I realized during development that its core logic is highly adaptable. By simply replacing "Item Name" with "Task Name," it functions as a versatile personal reminder for daily life, work, or hobbies.
 
