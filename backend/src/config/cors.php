@@ -22,7 +22,9 @@ return [
     'allowed_origins' => [
         'http://localhost:3000',
         'http://127.0.0.1:3000',
-        'http://192.168.3.3:3000', // 👈 スマホのフロントエンドを「許可」に追加！
+        'http://192.168.3.3:3000', // 
+        //'http://163.44.121.223:3000',
+        env('FRONTEND_URL'), // 
     ],
 
     #'allowed_origins' => [env('FRONTEND_URL', 'http://localhost:3000')],
