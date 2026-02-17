@@ -1,4 +1,4 @@
-# README
+# README＿ENGLISH
 
 # README.md
 
@@ -6,9 +6,13 @@
 
 ## **Project Name**: shopping-reminder
 
+**GitHub Repository URL :** [https://github.com/oxnut134/shop-rem-eng](https://github.com/oxnut134/shop-rem-eng)
+
 ## １)**Project Overview**
 
-Developed as a portfolio project, this application offers a practical solution to a common daily challenge: forgetting essential items during grocery or household shopping. I designed this app to streamline the shopping experience through a simple yet powerful interface.
+Developed as a portfolio project, this ap
+
+plication offers a practical solution to a common daily challenge: forgetting essential items during grocery or household shopping. I designed this app to streamline the shopping experience through a simple yet powerful interface.
 
 ① **Mobile-First Design**: Optimized for smartphone use with a compact, two-screen layout that ensures an intuitive user experience.
 ② **Versatile Utility**: While specifically tailored for daily shopping, the application's robust logic allows it to function  as a streamlined To-Do list manager.
@@ -51,7 +55,7 @@ Users can create shopping lists by entering item names and "check off" items as 
 
 ## **2) Application URL**
 
-**GitHub Repository URL : github.com:oxnut134/shopping-reminder**
+**GitHub Repository URL :** [https://github.com/oxnut134/shop-rem-eng](https://github.com/oxnut134/shop-rem-eng)
 
 ### **Clone with SSH**
 
@@ -86,7 +90,7 @@ menu.
 
 ### Authentication
 
-- **Laravel Breez** v2.3.8
+- **Laravel Breeze** v2.3.8
 
 ## **5) Database Schema (Table Design)**
 
@@ -220,8 +224,8 @@ docker compose exec app composer install
        # This will generate sample data including items and logs.
 ```
 
-## 8) Future Roadmap (Postscript)
+## **8) Future Roadmap (Postscript)**
 
 While this application was initially designed to prevent forgetting items during grocery shopping, I realized during development that its core logic is highly adaptable. By simply replacing "Item Name" with "Task Name," it functions as a versatile personal reminder for daily life, work, or hobbies.
 
-My immediate plan is to use this current version in a real-world setting to determine the best path forward: whether to pivot towards a **Universal Task Reminder** or to further specialize in **Advanced Shopping Intelligence**."# shop-rem-eng" 
+My immediate plan is to use this current version in a real-world setting to determine the best path forward: whether to pivot towards a **Universal Task Reminder** or to further specialize in **Advanced Shopping Intelligence**.
