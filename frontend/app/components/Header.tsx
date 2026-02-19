@@ -12,14 +12,16 @@ export default function Header() {
     const [isLoggingOut, setIsLoggingOut] = useState(false);
 
     useEffect(() => {
-        axios.get('/api/user')
+        ["/", "toBuy", "shopping_log"].includes(currentPage) &&
+         axios.get('/api/user')
             .then(res => {
                 setUserName(res.data.name); 
             })
+
             .catch(() => {
                 setUserName(null); 
             });
-    }, []);
+    }, [currentPage]);
 
     const handleLogout = async () => {
         if (isLoggingOut) return;
