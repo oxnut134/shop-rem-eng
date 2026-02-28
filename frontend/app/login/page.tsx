@@ -18,7 +18,7 @@ export default function LoginPage() {
 
 
     useEffect(() => {
-        setCurrentPage("login"); 
+        setCurrentPage("login");
     }, []);
     const handleLogin = async (data: any) => {
         if (executing) return;
@@ -27,6 +27,8 @@ export default function LoginPage() {
 
         try {
             await axios.get("/sanctum/csrf-cookie");
+            //await axios.get("http://web:80/sanctum/csrf-cookie");
+            //await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/sanctum/csrf-cookie`);
 
             const xsrfToken = document.cookie
                 .split('; ')
@@ -38,12 +40,12 @@ export default function LoginPage() {
                 password: data.password,
             }, {
                 headers: {
-                    'X-XSRF-TOKEN': decodeURIComponent(xsrfToken || ''), 
+                    'X-XSRF-TOKEN': decodeURIComponent(xsrfToken || ''),
                     'Accept': 'application/json',
                 }
             });
 
-            window.location.href = "/toBuy"; 
+            window.location.href = "/toBuy";
         } catch (err: any) {
             console.error("Login failed:", err);
             setError("Invalid emai address or password.");

@@ -3,7 +3,7 @@ import Axios from 'axios'
 const axios = Axios.create({
     //baseURL: "http://192.168.3.3:8080",
     //baseURL: "http://163.44.121.223:8080",
-    baseURL: process.env.NEXT_PUBLIC_BACKEND_URL,
+    baseURL: process.env.NEXT_PUBLIC_API_URL,
     withCredentials: true, // 👈 これが「ポケットの合言葉を使う」命令
     xsrfCookieName: "XSRF-TOKEN", // 👈 これが「合言葉の名前」
     xsrfHeaderName: "X-XSRF-TOKEN", // 👈 これが「見せる時のヘッダー名」
@@ -22,7 +22,8 @@ axios.interceptors.response.use(
         );
         if (error.response && error.response.status === 401) {
             window.location.href = '/login';
-        } return Promise.reject(error);
+        }
+         return Promise.reject(error);
     }
 );
 
