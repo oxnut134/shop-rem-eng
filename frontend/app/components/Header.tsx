@@ -1,26 +1,31 @@
 "use client";
 
 import axios from "../../lib/axios";
+import i18n from "../../lib/i18n";
 import { useAppContext } from "../context/AppContext";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 export default function Header() {
     const { executing, setExecuting } = useAppContext();
     const { currentPage, setCurrentPage } = useAppContext();
-    const pathname = String(usePathname() || ""); 
+    const pathname = String(usePathname() || "");
     const [userName, setUserName] = useState<string | null>(null);
     const [isLoggingOut, setIsLoggingOut] = useState(false);
 
+    const { language } = useAppContext();
+    const lang = i18n[language as keyof typeof i18n] || i18n.en;
+
+
     useEffect(() => {
         ["/", "toBuy", "shopping_log"].includes(currentPage) &&
-         axios.get('/api/user')
-            .then(res => {
-                setUserName(res.data.name); 
-            })
+            axios.get('/api/user')
+                .then(res => {
+                    setUserName(res.data.name);
+                })
 
-            .catch(() => {
-                setUserName(null); 
-            });
+                .catch(() => {
+                    setUserName(null);
+                });
     }, [currentPage]);
 
     const handleLogout = async () => {
@@ -41,7 +46,7 @@ export default function Header() {
             await axios.post('/logout', {
             }, {
                 headers: {
-                    'X-XSRF-TOKEN': decodeURIComponent(xsrfToken || ''), 
+                    'X-XSRF-TOKEN': decodeURIComponent(xsrfToken || ''),
                     'Accept': 'application/json',
                 }
             });
@@ -49,7 +54,7 @@ export default function Header() {
         } catch (error) {
             console.error("Logout failed.:", error);
             window.location.href = "/login";
-        }finally{
+        } finally {
             setIsLoggingOut(false)
         }
     };
@@ -71,14 +76,14 @@ export default function Header() {
 
                 <div className="flex gap-2">
                     {currentPage === "login" && (
-                        <button onClick={() => window.location.href = "/register"}>Register</button>
+                        <button onClick={() => window.location.href = "/register"}>{lang.REGISTER}</button>
                     )}
                     {currentPage === "register" && (
-                        <button onClick={() => window.location.href = "/login"}>Login</button>
+                        <button onClick={() => window.location.href = "/login"}>{lang.LOGIN}</button>
                     )}
                     {["/", "toBuy", "shopping_log"].includes(currentPage) && (
                         <>
-                            <button onClick={handleLogout}>{isLoggingOut? "Logging out...":"Logout"}</button>
+                            <button onClick={handleLogout}>{isLoggingOut ? "Logging out..." : lang.LOGOUT}</button>
                         </>)}
                 </div>
             </div>

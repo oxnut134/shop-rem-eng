@@ -5,6 +5,7 @@ import { useAppContext } from "../context/AppContext";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import axios from "../../lib/axios";
+import i18n from "../../lib/i18n";
 import { useForm } from "react-hook-form";
 
 export default function LoginPage() {
@@ -15,6 +16,11 @@ export default function LoginPage() {
     const router = useRouter();
     const { currentPage, setCurrentPage } = useAppContext();
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
+
+
+    const { language } = useAppContext();
+    const lang = i18n[language as keyof typeof i18n] || i18n.en;
+
 
 
     useEffect(() => {
@@ -58,7 +64,7 @@ export default function LoginPage() {
             <div className="p-6 mt-6 max-w-md mx-auto bg-zinc-50 ">
                 <Header />
                 <div className="p-6 max-w-md mx-auto">
-                    <h1 className="text-3xl font-bold mb-8 text-orange-600 text-center">Login</h1>
+                    <h1 className="text-3xl font-bold mb-8 text-orange-600 text-center">{lang.LOGIN_PAGE_TITLE}</h1>
                     <form onSubmit={handleSubmit(handleLogin)} className="flex flex-col gap-y-12">
                         <div>
                             <label className="block text-sm font-medium text-gray-700 mb-1"></label>
@@ -69,7 +75,7 @@ export default function LoginPage() {
                                 })}
                                 type="email"
                                 className="w-full border border-gray-300 rounded-lg p-3 focus:ring-2 focus:ring-orange-500 outline-none"
-                                placeholder="Email"
+                                placeholder={lang.EMAIL}
                             />
                             {errors.email && <p className="text-red-500 text-xs mt-1">{String(errors.email.message)}</p>}
                         </div>
@@ -83,7 +89,7 @@ export default function LoginPage() {
                                     minLength: { value: 8, message: "Password must be at least 8 characters." }
                                 })}
                                 className="w-full border border-gray-300 rounded-lg p-3 focus:ring-2 focus:ring-orange-500 outline-none"
-                                placeholder="Password"
+                                placeholder={lang.PASSWORD}
                             />
                             {errors.password && <p className="text-red-500 text-xs mt-1">{String(errors.password.message)}</p>}
                         </div>
@@ -96,7 +102,7 @@ export default function LoginPage() {
                             className={`w-full py-3 rounded-lg font-bold text-white transition-colors ${executing ? "bg-gray-400" : "bg-orange-500 hover:bg-orange-600"
                                 }`}
                         >
-                            {executing ? "Authenticating..." : "Login"}
+                            {executing ? "Authenticating..." : lang.LOGIN}
                         </button>
                     </form>
 

@@ -4,6 +4,7 @@ import Header from "../components/Header";
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import axios from "../../lib/axios";
+import i18n from "../../lib/i18n";
 import { useRouter } from 'next/navigation';
 import { useAppContext } from "../context/AppContext";
 
@@ -17,17 +18,20 @@ export default function ToBuyPage() {
     const [authChecking, setAuthChecking] = useState(true);
     const [targetItem, setTargetItem] = useState();
 
+    const { language } = useAppContext();
+    const lang = i18n[language as keyof typeof i18n] || i18n.en;
+
     useEffect(() => {
-        setCurrentPage("toBuy"); 
+        setCurrentPage("toBuy");
     }, []);
 
     useEffect(() => {
         axios.get('/api/user')
             .then(() => {
-                setAuthChecking(false); 
+                setAuthChecking(false);
             })
             .catch(() => {
-                window.location.href = "/login"; 
+                window.location.href = "/login";
             });
     }, []);
 
@@ -48,8 +52,8 @@ export default function ToBuyPage() {
 
     useEffect(() => {
         const init = async () => {
-            await axios.get('/sanctum/csrf-cookie'); 
-            getItemsBought(); 
+            await axios.get('/sanctum/csrf-cookie');
+            getItemsBought();
         };
         init();
     }, []);
@@ -101,7 +105,7 @@ export default function ToBuyPage() {
                 }
             });
             return;
-     
+
         } catch (error) {
             console.error("Error in handleTargetItem :", error);
         } finally {
@@ -140,11 +144,11 @@ export default function ToBuyPage() {
                     onClick={handleBackToBuy}
                     className="mt-3 text-blue-500 text-sm hover:underline"
                 >
-                    ← Back
+                    {lang.BACK_TO_MEMO}
                 </button>
-                <h1 className="text-2xl font-bold my-2 text-orange-600 text-center">Shopping log</h1>
+                <h1 className="text-2xl font-bold my-2 text-orange-600 text-center">{lang.SECOND_PAGE_TITLE}</h1>
                 <div className="space-y-3">
-                    <h2 className="text-lg font-semibold text-gray-700 border-b pb-2">Current list</h2>
+                    <h2 className="text-lg font-semibold text-gray-700 border-b pb-2">{lang.CURRENT_LIST}</h2>
                     {items.length === 0 ? (
                         <p className="text-gray-400 text-sm">Your list is empty.</p>
                     ) : (
@@ -173,7 +177,7 @@ export default function ToBuyPage() {
                                                         ? " bg-green-500 text-white hover:bg-green-400"
                                                         : " bg-orange-500 text-white hover:bg-orange-400"
                                                         }`}  >
-                                                    {item.menu ? "Menu-on" : "Menu-off"}
+                                                    {item.menu ? lang.MENU_ON : lang.MENU_OFF}
                                                 </button>
                                             )}
                                         </div>

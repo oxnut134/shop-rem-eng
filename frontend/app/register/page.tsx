@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import axios from "../../lib/axios";
+import i18n from "../../lib/i18n";
 import Header from "../components/Header";
 import { useAppContext } from "../context/AppContext";
 
@@ -11,6 +12,10 @@ export default function RegisterPage() {
     const { executing, setExecuting } = useAppContext();
     const [serverError, setServerError] = useState("");
     const { currentPage, setCurrentPage } = useAppContext();
+
+    const { language } = useAppContext();
+    const lang = i18n[language as keyof typeof i18n] || i18n.en;
+
     useEffect(() => {
         setCurrentPage("register");
     }, []);
@@ -49,13 +54,13 @@ export default function RegisterPage() {
         <div className="p-6 mt-6 max-w-md mx-auto bg-zinc-50 ">
             <Header />
             <div className="p-6 max-w-md mx-auto">
-                <h1 className="text-3xl font-bold mb-8 text-orange-600 text-center">New Account</h1>
+                <h1 className="text-3xl font-bold mb-8 text-orange-600 text-center">{lang.REGISTER_PAGE_TITLE}</h1>
 
                 <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
                     <div>
                         <input
                             {...register("name", { required: "Name is required." })}
-                            placeholder="Name"
+                            placeholder={lang.NAME}
                             className="w-full border border-gray-300 rounded-lg p-3 outline-none focus:ring-2 focus:ring-orange-500"
                         />
                         {errors.name && <p className="text-red-500 text-xs mt-1">{String(errors.name.message)}</p>}
@@ -67,7 +72,7 @@ export default function RegisterPage() {
                                 required: "Email is required.",
                                 pattern: { value: /^\S+@\S+$/i, message: "Invalid email format." }
                             })}
-                            placeholder="Email"
+                            placeholder={lang.EMAIL}
                             className="w-full border border-gray-300 rounded-lg p-3 outline-none focus:ring-2 focus:ring-orange-500"
                         />
                         {errors.email && <p className="text-red-500 text-xs mt-1">{String(errors.email.message)}</p>}
@@ -79,7 +84,7 @@ export default function RegisterPage() {
                                 required: "Password is required.",
                                 minLength: { value: 8, message: "Password must be at least 8 characters." }
                             })}
-                            placeholder="Password"
+                            placeholder={lang.PASSWORD}
                             className="w-full border border-gray-300 rounded-lg p-3 outline-none focus:ring-2 focus:ring-orange-500"
                         />
                         {errors.password && <p className="text-red-500 text-xs mt-1">{String(errors.password.message)}</p>}
@@ -91,7 +96,7 @@ export default function RegisterPage() {
                                 required: "Confirmation password is required.",
                                 validate: (value) => value === password || "Passwords do not match."
                             })}
-                            placeholder="Confirmation password"
+                            placeholder={lang.CONFIRMATION_PASSWARD}
                             className="w-full border border-gray-300 rounded-lg p-3 outline-none focus:ring-2 focus:ring-orange-500"
                         />
                         {errors.password_confirmation && <p className="text-red-500 text-xs mt-1">{String(errors.password_confirmation.message)}</p>}
@@ -105,7 +110,7 @@ export default function RegisterPage() {
                         className={`w-full py-3 rounded-lg font-bold text-white transition-colors ${executing ? "bg-gray-400" : "bg-orange-500 hover:bg-orange-600"
                             }`}
                     >
-                        {executing ? "Creating..." : "Create Account"}
+                        {executing ? "Creating..." : lang.CREATE_ACCOUNT}
                     </button>
                 </form>
             </div>

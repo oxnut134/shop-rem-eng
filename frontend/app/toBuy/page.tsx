@@ -4,6 +4,7 @@ import Header from "../components/Header";
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import axios from "../../lib/axios";
+import i18n from "../../lib/i18n";
 import { useRouter } from 'next/navigation';
 import { useAppContext } from "../context/AppContext";
 
@@ -19,11 +20,15 @@ export default function ToBuyPage() {
     const [inputMenu, setInputMenu] = useState([]);
 
     const [editingId, setEditingId] = useState<number | null>(null);
-    const [tempName, setTempName] = useState(""); 
+    const [tempName, setTempName] = useState("");
     const [deleteMode, setDeleteMode] = useState(false);
 
     const [showModal, setShowModal] = useState(false);
     const [deleteId, setDeleteId] = useState<number | null>(null);
+
+    const { language } = useAppContext();
+    const lang = i18n[language as keyof typeof i18n] || i18n.en;
+
 
     console.log("executing:", executing);
     useEffect(() => {
@@ -61,7 +66,7 @@ export default function ToBuyPage() {
             console.error("Error in getInputMenu :", error);
         }
     };
-    useEffect(() => { 
+    useEffect(() => {
         getInputMenu();
     }, []);
     const historyMenu = Array.from(new Set(inputMenu.map((item: any) => item.item_name)));
@@ -227,8 +232,8 @@ export default function ToBuyPage() {
         }
     }
     const confirmDelete = (id: number) => {
-        setDeleteId(id);  
-        setShowModal(true); 
+        setDeleteId(id);
+        setShowModal(true);
     };
 
     if (authChecking) {
@@ -251,10 +256,10 @@ export default function ToBuyPage() {
                         onClick={handleGotoLog}
                         className="m-3 bg-orange-500 text-white font-bold px-4 rounded-lg hover:bg-orange-600 transition-colors"
                     >
-                        Shopping logs
+                        {lang.SHOPPING_LOGS}
                     </button>
                 </div>
-                <h1 className="text-2xl font-bold mt-0 mb-2 text-orange-500 text-center">Shopping notes</h1>
+                <h1 className="text-2xl font-bold mt-0 mb-2 text-orange-500 text-center">{lang.FIRST_PAGE_TITLE}</h1>
 
                 <div className="flex gap-2 mb-8">
                     <div className="flex flex-1 border border-gray-300 rounded-lg overflow-hidden shadow-sm focus-within:ring-2 focus-within:ring-orange-500">
@@ -264,10 +269,10 @@ export default function ToBuyPage() {
                             onChange={(e) => setItemName(e.target.value)}
                             onKeyDown={(e) => {
                                 if (e.key === "Enter") {
-                                    handleAdd(); 
+                                    handleAdd();
                                 }
                             }}
-                            placeholder="Item name or select from right"
+                            placeholder={lang.INPUT}
                             className="text-[15px] flex-1 py-2 px-3 text-base focus:outline-none"
                         />
                         <select
@@ -291,20 +296,20 @@ export default function ToBuyPage() {
                         onClick={handleAdd}
                         className="bg-orange-500 text-white font-bold px-4 rounded-lg hover:bg-orange-600 transition-colors"
                     >
-                        Create
+                        {lang.ADD}
                     </button>
                 </div>
 
                 <div className="space-y-3">
                     <div className="flex justify-between border-b-2 pb-2">
-                        <h2 className="text-lg font-semibold text-gray-700">Current list</h2>
+                        <h2 className="text-lg font-semibold text-gray-700">{lang.CURRENT_LIST}</h2>
                         <button
                             onClick={() => handleMode()}
                             className={`font-bold px-4 rounded-lg transition-colors ${deleteMode
                                 ? "bg-yellow-500 text-white hover:bg-yellow-500"
                                 : "bg-green-500 text-white hover:bg-green-400"
                                 }`}  >
-                            {deleteMode ? "Delete mode" : "Edit/check mode"}
+                            {deleteMode ? lang.DELETE_MODE : lang.EDIT_CHECK_MODE}
                         </button>
                     </div>
                     {items.length === 0 ? (
@@ -313,25 +318,25 @@ export default function ToBuyPage() {
                         <ul className="divide-y divide-gray-200">
                             {items.map((item: any, index: any) => (
                                 <li key={index} className="py-3 flex justify-between items-center animate-in fade-in slide-in-from-top-1">
-                                    
-                                    {editingId === item.id && !deleteMode  ? (
+
+                                    {editingId === item.id && !deleteMode ? (
                                         <input
                                             type="text"
                                             value={tempName}
                                             onChange={(e) => setTempName(e.target.value)}
                                             onKeyDown={(e) => {
                                                 if (e.key === "Enter") {
-                                                    handleSaveEdit(item.id); 
+                                                    handleSaveEdit(item.id);
                                                 }
                                             }}
-                                            onBlur={() => setEditingId(null)} 
+                                            onBlur={() => setEditingId(null)}
                                             autoFocus
                                             className="flex-1 border border-orange-500 rounded me-2 px-2 py-1 outline-none"
                                         />
                                     ) : (
                                         <span
                                             onClick={() => {
-                                                console.log("item.is_checked:",item.is_checked);
+                                                console.log("item.is_checked:", item.is_checked);
                                                 if (item.is_checked) return;
                                                 setEditingId(item.id);
                                                 setTempName(item.item_name);
@@ -348,13 +353,13 @@ export default function ToBuyPage() {
                                                 ? "bg-orange-500 text-white hover:bg-orange-400"
                                                 : "bg-green-500 text-white hover:bg-green-400"
                                                 }`}  >
-                                            Check
+                                            {lang.CHECK}
                                         </button>)}
                                     {deleteMode && (
                                         <button
                                             onClick={() => confirmDelete(item.id)}
                                             className="font-bold px-4 rounded-lg transition-colors bg-yellow-500 text-white hover:bg-yellow-400">
-                                            Delete                                        </button>)}
+                                            {lang.DELETE}                                        </button>)}
                                 </li>
                             ))}
                         </ul>
