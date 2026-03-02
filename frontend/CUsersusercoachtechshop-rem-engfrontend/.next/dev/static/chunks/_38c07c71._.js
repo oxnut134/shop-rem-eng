@@ -30,7 +30,6 @@ const __TURBOPACK__default__export__ = axios;
 if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
     __turbopack_context__.k.registerExports(__turbopack_context__.m, globalThis.$RefreshHelpers$);
 }
- //export default axios;
 }),
 "[project]/lib/i18n.ts [app-client] (ecmascript)", ((__turbopack_context__) => {
 "use strict";
@@ -173,10 +172,10 @@ function Header() {
     };
     console.log("currentPage:", currentPage);
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("header", {
-        className: "bg-white border-b border-gray-200 pt-0 pb-2 pl-2 pr-2 shadow-sm mb-0",
+        className: "bg-white border-b border-gray-200 py-1 px-2 shadow-sm mb-0",
         children: [
-            userName && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                className: "text-[10px] text-zinc-400",
+            userName && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                className: "text-[10px] text-zinc-400 truncate",
                 children: [
                     "Logged in as: ",
                     userName
@@ -184,89 +183,119 @@ function Header() {
             }, void 0, true, {
                 fileName: "[project]/app/components/Header.tsx",
                 lineNumber: 65,
-                columnNumber: 17
+                columnNumber: 13
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "max-w-md mx-auto flex justify-between items-center",
+                className: "max-w-md mx-auto flex justify-between items-center flex-nowrap gap-1",
                 children: [
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "flex items-center gap-0",
+                        className: "flex items-center min-w-0",
                         children: [
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
                                 src: "/shopping-cart.webp",
                                 alt: "Basket",
-                                className: "w-10 h-10 object-contain"
+                                className: "w-8 h-8 md:w-10 md:h-10 object-contain flex-shrink-0"
                             }, void 0, false, {
                                 fileName: "[project]/app/components/Header.tsx",
-                                lineNumber: 69,
-                                columnNumber: 21
+                                lineNumber: 72,
+                                columnNumber: 17
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                className: "text-[25px] scale-x-70 origin-left italic text-orange-600 font-bold text-lg",
+                                className: "text-base sm:text-[25px] scale-x-90 sm:scale-x-70 origin-left italic text-orange-600 font-bold whitespace-nowrap overflow-hidden",
                                 children: "Shopping Reminder"
                             }, void 0, false, {
                                 fileName: "[project]/app/components/Header.tsx",
-                                lineNumber: 74,
-                                columnNumber: 21
+                                lineNumber: 78,
+                                columnNumber: 17
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/components/Header.tsx",
-                        lineNumber: 68,
-                        columnNumber: 17
+                        lineNumber: 71,
+                        columnNumber: 13
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "flex gap-2",
+                        className: "flex gap-1 flex-shrink-0",
                         children: [
                             currentPage === "login" && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                className: "text-xs py-1 px-2 ",
                                 onClick: ()=>window.location.href = "/register",
                                 children: lang.REGISTER
                             }, void 0, false, {
                                 fileName: "[project]/app/components/Header.tsx",
-                                lineNumber: 79,
-                                columnNumber: 25
+                                lineNumber: 86,
+                                columnNumber: 21
                             }, this),
                             currentPage === "register" && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                className: "text-xs py-1 px-2 ",
                                 onClick: ()=>window.location.href = "/login",
                                 children: lang.LOGIN
                             }, void 0, false, {
                                 fileName: "[project]/app/components/Header.tsx",
-                                lineNumber: 82,
-                                columnNumber: 25
+                                lineNumber: 89,
+                                columnNumber: 21
                             }, this),
                             [
                                 "/",
                                 "toBuy",
                                 "shopping_log"
-                            ].includes(currentPage) && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Fragment"], {
-                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                                    onClick: handleLogout,
-                                    children: isLoggingOut ? "Logging out..." : lang.LOGOUT
-                                }, void 0, false, {
-                                    fileName: "[project]/app/components/Header.tsx",
-                                    lineNumber: 86,
-                                    columnNumber: 29
-                                }, this)
-                            }, void 0, false)
+                            ].includes(currentPage) && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                className: "text-xs py-1 px-2 ",
+                                onClick: handleLogout,
+                                children: isLoggingOut ? "..." : lang.LOGOUT
+                            }, void 0, false, {
+                                fileName: "[project]/app/components/Header.tsx",
+                                lineNumber: 92,
+                                columnNumber: 21
+                            }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/components/Header.tsx",
-                        lineNumber: 77,
-                        columnNumber: 17
+                        lineNumber: 84,
+                        columnNumber: 13
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/app/components/Header.tsx",
-                lineNumber: 67,
-                columnNumber: 13
+                lineNumber: 68,
+                columnNumber: 9
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/app/components/Header.tsx",
         lineNumber: 63,
-        columnNumber: 9
+        columnNumber: 5
     }, this);
-}
+/*return (
+        <header className="bg-white border-b border-gray-200 pt-0 pb-2 pl-2 pr-2 shadow-sm mb-0">
+            {userName && (
+                <span className="text-[10px] text-zinc-400">Logged in as: {userName}</span>
+            )}
+            <div className="max-w-md mx-auto flex justify-between items-center">
+                <div className="flex items-center gap-0">
+                    <img
+                        src="/shopping-cart.webp"
+                        alt="Basket"
+                        className="w-10 h-10 object-contain"
+                    />
+                    <span className="text-[25px] scale-x-70 origin-left italic text-orange-600 font-bold text-lg">Shopping Reminder</span>
+                </div>
+
+                <div className="flex gap-2">
+                    {currentPage === "login" && (
+                        <button onClick={() => window.location.href = "/register"}>{lang.REGISTER}</button>
+                    )}
+                    {currentPage === "register" && (
+                        <button onClick={() => window.location.href = "/login"}>{lang.LOGIN}</button>
+                    )}
+                    {["/", "toBuy", "shopping_log"].includes(currentPage) && (
+                        <>
+                            <button onClick={handleLogout}>{isLoggingOut ? "Logging out..." : lang.LOGOUT}</button>
+                        </>)}
+                </div>
+            </div>
+        </header>
+    );*/ }
 _s(Header, "CcCzxHJN5rz3kQ9N8Mj5/z7AxUk=", false, function() {
     return [
         __TURBOPACK__imported__module__$5b$project$5d2f$app$2f$context$2f$AppContext$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useAppContext"],
