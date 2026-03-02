@@ -6,17 +6,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Item extends Model
 {
-    /*return \App\Models\Item::create([
-        'user_id'   => 1, // とりあえずゲストユーザー1番で固定
-        'item_name' => $request->item_name,
-        'amount'    => $request->amount,
-        'is_checked'=> false,
-    ]);*/
-    protected $fillable=[
-       'user_id', // とりあえずゲストユーザー1番で固定
+    protected $casts = [
+        'item_name' => 'encrypted', // 👈 これで DB 内では 1秒で呪文に化けるにゃ！
+    ];
+    protected $fillable = [
+        'user_id', // とりあえずゲストユーザー1番で固定
         'item_name',
-        'amount' ,
+        'amount',
         'is_checked',
- 
+
     ];
 }
