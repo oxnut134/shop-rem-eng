@@ -38,7 +38,10 @@ export default function ToBuyPage() {
     const getItemsBought = async () => {
         try {
             const response = await axios.get('/api/getItemsBought');
-            setItems(response.data);
+            //const reversedData = [...response.data].reverse();
+            //setItems(reversedData);
+            //setItems(response.data.reverse());
+            setItems([...response.data].sort((a, b) => b.id - a.id));
             console.log("itemsSuccess:", items, response.data);
         } catch (error) {
             console.error("Error in getItemsBought :", error);
