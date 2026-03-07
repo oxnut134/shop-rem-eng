@@ -42,4 +42,3 @@ next-env.d.ts
 
 # my ignore
 /app/diary/
-/app/page.tsx
