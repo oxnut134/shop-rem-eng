@@ -26,7 +26,13 @@ COPY ./src /var/www/html
 # --no-scripts をつけることで artisan がなくてもインストールを完了させます
 RUN composer install --no-dev --optimize-autoloader --no-scripts
 
-# 6. 書き込み権限の付与
-RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
+# 【追加】ビルド時に設定キャッシュを強制削除
+RUN php artisan config:clear && php artisan cache:clear
+
+# 【修正】権限を 777 にして「権限不足」を物理的に排除
+RUN chmod -R 777 storage bootstrap/cache
+RUN chown -R www-data:www-data /var/www/html
+
+
 
 EXPOSE 80
