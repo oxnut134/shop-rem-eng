@@ -10,7 +10,7 @@ require __DIR__.'/auth.php';
 
 
 // routes/web.php に追記
-Route::get('/run-migrate', function () {
+/*Route::get('/run-migrate', function () {
     try {
         // \Illuminate\Support\Facades\Artisan を直接指定
         \Illuminate\Support\Facades\Artisan::call('migrate', ['--force' => true]);
@@ -18,4 +18,4 @@ Route::get('/run-migrate', function () {
     } catch (\Exception $e) {
         return "Error: " . $e->getMessage();
     }
-});
+});*/
