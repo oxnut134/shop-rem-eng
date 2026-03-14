@@ -21,6 +21,9 @@ axios.interceptors.response.use(
             "Message: " + error.message + "\n" +
             "Target: " + (error.config ? error.config.url : "Unknown")
         );*/
+        if (window.location.pathname === '/login') {
+            return Promise.reject(error);
+        }
         if (error.response && error.response.status === 401) {
             window.location.href = '/login';
         }
