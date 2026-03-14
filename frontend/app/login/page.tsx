@@ -41,7 +41,7 @@ export default function LoginPage() {
                 .find(row => row.startsWith('XSRF-TOKEN='))
                 ?.split('=')[1];
 
-            await axios.post('/login', {
+            const response = await axios.post('/login', {
                 email: data.email,
                 password: data.password,
             }, {
@@ -51,7 +51,15 @@ export default function LoginPage() {
                 }
             });
 
-            window.location.href = "/toBuy";
+            if (response.status === 200 || response.status === 204) {
+                console.log("通信成功。Cookieの定着を待機中...");
+
+                // 0.5秒待ってから遷移（ブラウザにCookieを書き込む時間を与える）
+                await new Promise(resolve => setTimeout(resolve, 500));
+
+                window.location.href = "/toBuy";
+            }
+            //window.location.href = "/toBuy";
         } catch (err: any) {
             console.error("Login failed:", err);
             setError("Invalid emai address or password.");
