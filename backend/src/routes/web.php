@@ -19,3 +19,8 @@ Route::get('/run-migrate', function () {
         return "Error: " . $e->getMessage();
     }
 });
+Route::get('/run-seed', function () {
+    // 本番環境では --force がないと実行を拒否されることがあります
+    $exitCode = Artisan::call('db:seed', ['--force' => true]);
+    return "Seeding finished with exit code: " . $exitCode;
+});
