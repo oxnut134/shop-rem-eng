@@ -20,12 +20,13 @@ return [
     'allowed_methods' => ['*'],
 
     'allowed_origins' => [
+        'https://www.shop-rem-eng.net',
         'https://shop-rem-eng.net',
         'http://localhost:3000',
         'http://127.0.0.1:3000',
         'http://192.168.3.3:3000', // 
         //'http://163.44.121.223:3000',
-        env('FRONTEND_URL'),  
+        env('FRONTEND_URL'),
     ],
 
     #'allowed_origins' => [env('FRONTEND_URL', 'http://localhost:3000')],
